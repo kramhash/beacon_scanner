@@ -33,6 +33,7 @@ internal class FlutterPlatform(private val context: Context) {
                     Manifest.permission.ACCESS_COARSE_LOCATION,
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.BLUETOOTH_SCAN,
+                    Manifest.permission.BLUETOOTH_CONNECT,
                 ), BeaconScannerPlugin.REQUEST_CODE_LOCATION
             )
         } else {
