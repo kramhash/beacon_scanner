@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.RemoteException
+import android.util.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -27,6 +28,7 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
     companion object {
         const val REQUEST_CODE_LOCATION = 1234
         const val REQUEST_CODE_BLUETOOTH = 5678
+        private val TAG = BeaconScannerPlugin::class.java.simpleName
     }
 
     private val iBeaconLayout = BeaconParser()
@@ -60,6 +62,7 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
             activityPluginBinding?.addActivityResultListener(this)
             activityPluginBinding?.addRequestPermissionsResultListener(this)
         }
+        Log.d(TAG, "set distance model")
         BeaconManager.setDistanceModelUpdateUrl("https://s3.amazonaws.com/android-beacon-library/android-distance-db.json")
         beaconManager = BeaconManager.getInstanceForApplication(context)
         if (!beaconManager!!.beaconParsers.contains(iBeaconLayout)) {
