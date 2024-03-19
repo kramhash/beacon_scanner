@@ -60,6 +60,7 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
             activityPluginBinding?.addActivityResultListener(this)
             activityPluginBinding?.addRequestPermissionsResultListener(this)
         }
+        BeaconManager.setDistanceModelUpdateUrl("https://s3.amazonaws.com/android-beacon-library/android-distance-db.json")
         beaconManager = BeaconManager.getInstanceForApplication(context)
         if (!beaconManager!!.beaconParsers.contains(iBeaconLayout)) {
             beaconManager?.beaconParsers?.clear()
