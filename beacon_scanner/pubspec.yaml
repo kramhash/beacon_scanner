@@ -21,7 +21,8 @@ dependencies:
   flutter:
     sdk: flutter
   beacon_scanner_android:
-    git: https://github.com/kramhash/beacon_scanner.git
+    git:
+      url: https://github.com/kramhash/beacon_scanner.git
       path: beacon_scanner_android
       ref: main
 
